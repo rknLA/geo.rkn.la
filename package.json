@@ -1,0 +1,15 @@
+{
+  "name": "geo-rkn",
+  "version": "0.0.1",
+  "description": "geotracking rknLA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "R. Kevin Nelson <kevin@rkn.la>",
+  "license": "BSD",
+  "dependencies": {
+    "hapi": "~1.15.0",
+    "winston": "~0.7.2"
+  }
+}
