@@ -25,7 +25,7 @@ var locations = {
     }
 
     var filePath = "./locations/" + Date.now() + ".json";
-    fs.writeFileSync(filePath, request.payload.locations);
+    fs.writeFileSync(filePath, JSON.stringify(request.payload.locations));
 
     request.reply({
       message: "ohai!"
