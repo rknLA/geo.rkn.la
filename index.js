@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+var fs = require('fs');
 var Hapi = require('hapi');
 
 var server = Hapi.createServer('localhost', 4450);
@@ -19,17 +20,18 @@ var locations = {
     var computedSignature = getSignature(request.payload.locations);
     console.log("computed signature: ", computedSignature);
 
-    if (computedSignature == request.payload.signature) {
-      console.log("SIGNATURES MATCH!");
-      request.reply({
-        message: "ohai!"
-      });
-    } else {
-      console.log("signature mismatch");
+    if (computedSignature != request.payload.signature) {
       request.reply({
         error: "invalid HMAC signature"
       });
     }
+
+    var filePath = "./locations/" + Date.now() + ".json";
+    fs.writeFileSync(filePath, request.payload.locations);
+
+    request.reply({
+      message: "ohai!"
+    });
   },
 };
 
