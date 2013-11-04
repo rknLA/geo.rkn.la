@@ -13,8 +13,6 @@ var getSignature = function(locationsArray) {
 
 var locations = {
   handler: function(request) {
-    console.log("locations: ", request.payload.locations); // the locations payload
-    console.log("sent signature: ", request.payload.signature); // the signature sent by the app
 
     // the signature is computed on the locations object, not the whole request body.
     var computedSignature = getSignature(request.payload.locations);
