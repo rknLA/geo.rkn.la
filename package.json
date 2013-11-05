@@ -10,5 +10,6 @@
   "license": "BSD",
   "dependencies": {
     "hapi": "~1.15.0",
+    "moment": "~2.4.0"
   }
 }

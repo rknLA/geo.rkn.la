@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var fs = require('fs');
 var Hapi = require('hapi');
+var moment = require('moment');
 
 var server = Hapi.createServer('localhost', 4450);
 
@@ -24,7 +25,9 @@ var locations = {
       });
     }
 
-    var filePath = "./locations/" + Date.now() + ".json";
+    var now = moment();
+    var filePath = ['.', 'locations', now.year(), now.month(), now.date(), now.unix() + ".json"].join('/');
+
     fs.writeFileSync(filePath, JSON.stringify(request.payload.locations));
 
     request.reply({
